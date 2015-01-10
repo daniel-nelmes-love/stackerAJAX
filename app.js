@@ -129,7 +129,7 @@ var getUnanswered = function(tags) {
 
 function getInspiration (tags) {
 	var result = $.ajax({
-		url: "http://api.stackexchange.com/2.2/tags/" + tags + "/top-answerers/all_time?site=stackoverflow",
+		url: "https://api.stackexchange.com/2.2/tags/" + tags + "/top-answerers/all_time?site=stackoverflow",
 		dataType: "jsonp",
 		type: "GET",
 		})
