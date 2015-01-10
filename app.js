@@ -51,19 +51,31 @@ var showAnswerer = function(answerer) {
 	// clone our result template code
 	var result = $('.templates .answerer').clone();
 	
-	// Set the question properties in result
+	// Set the answerer properties in result
 	var answererElem = result.find('.user-text a');
 	answererElem.attr('href', answerer.user.link);
 	answererElem.text(answerer.user.display_name);
 
 	var scoreElem = result.find('.score');
-	scoreElem.text(answerer.score);
+	scoreElem.text(addCommas(answerer.score));
 
 	var repElem = result.find('.rep');
-	repElem.text(answerer.user.reputation);
+	repElem.text(addCommas(answerer.user.reputation));
 
 	var imgElem = result.find('img');
 	imgElem.attr('src', answerer.user.profile_image);
+
+	function addCommas(nStr){
+		nStr += '';
+		x = nStr.split('.');
+		x1 = x[0];
+		x2 = x.length > 1 ? '.' + x[1] : '';
+		var rgx = /(\d+)(\d{3})/;
+		while (rgx.test(x1)) {
+			x1 = x1.replace(rgx, '$1' + ',' + '$2');
+		}
+		return x1 + x2;
+	}
 
 	return result;
 };
