@@ -30,8 +30,13 @@
 	clear: both;
 }
 
-.inspiration { 
-	margin-left: 3em;
+.answerer dd { 
+	margin-left: 0;
+	padding-bottom: 0.5rem;
+}
+
+.answerer img {
+	float: right;
 }
 
 .result {
