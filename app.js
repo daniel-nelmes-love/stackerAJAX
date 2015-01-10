@@ -56,6 +56,15 @@ var showAnswerer = function(answerer) {
 	answererElem.attr('href', answerer.user.link);
 	answererElem.text(answerer.user.display_name);
 
+	var scoreElem = result.find('.score');
+	scoreElem.text(answerer.score);
+
+	var repElem = result.find('.rep');
+	repElem.text(answerer.user.reputation);
+
+	var imgElem = result.find('img');
+	imgElem.attr('src', answerer.user.profile_image);
+
 	return result;
 };
 
