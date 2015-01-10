@@ -46,6 +46,19 @@ var showQuestion = function(question) {
 	return result;
 };
 
+var showAnswerer = function(answerer) {
+	
+	// clone our result template code
+	var result = $('.templates .answerer').clone();
+	
+	// Set the question properties in result
+	var answererElem = result.find('.user-text a');
+	answererElem.attr('href', answerer.user.link);
+	answererElem.text(answerer.user.display_name);
+
+	return result;
+};
+
 
 // this function takes the results object from StackOverflow
 // and creates info about search results to be appended to DOM
@@ -101,12 +114,11 @@ function getInspiration (tags) {
 		})
 	.done(function(result){
 		var searchResults = showSearchResults(tags, result.items.length);
-
 		$('.search-results').html(searchResults);
 
 		$.each(result.items, function(i, item) {
-			var question = showQuestion(item);
-			$('.results').append(question);
+			var answerer = showAnswerer(item);
+			$('.results').append(answerer);
 		});
 	})
 	.fail(function(jqXHR, error, errorThrown){
